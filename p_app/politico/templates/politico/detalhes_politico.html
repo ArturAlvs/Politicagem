@@ -1,0 +1,15 @@
+{% if politico %}
+
+	Nome: {{ politico.nome }}
+<br/>
+  Sobrenome: {{ politico.sobre_nome }}
+  <br/>
+
+  Idade: {{ politico.idade }}
+  <br/>
+
+
+{% else %}
+	<p>Politico nao encontrado.</p>
+
+{% endif %}

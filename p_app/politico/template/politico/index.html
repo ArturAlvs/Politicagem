@@ -1,0 +1,11 @@
+{% if politico_query_result %}
+	<ul>
+		{% for politico in politico_query_result %}
+			<li> <a href="{% url 'politico:detalhes' politico.id %}"> {{ politico.nome }} </a>  </li>
+		{% endfor %}
+	</ul>
+
+{% else %}
+	<p>Nenhum politico.</p>
+
+{% endif %}

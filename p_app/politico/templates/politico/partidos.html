@@ -1,0 +1,11 @@
+{% if partido_query_result %}
+	<ul>
+		{% for partido in partido_query_result %}
+			<li> <a href="{% url 'politico:detalhes_partido' partido.id %}"> {{ partido.nome }}  aa</a>  </li>
+		{% endfor %}
+	</ul>
+
+{% else %}
+	<p>Nenhum partido.</p>
+
+{% endif %}
