@@ -17,7 +17,7 @@ from django.conf.urls import include, url
 from django.contrib import admin
 
 urlpatterns = [
-    url(r'^', include('politico.urls')),
+    url(r'^', include('perfil.urls')),
     # url(r'^partido/', include('politico.urls')),
     url(r'^admin/', admin.site.urls),
 ]
