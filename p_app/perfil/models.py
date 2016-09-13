@@ -17,7 +17,7 @@ class Politico(models.Model):
 
 	# Atributos de Pessoa -------
 	nome = models.CharField(max_length=20)
-	sobre_nome = models.CharField(max_length=100)
+	sobrenome = models.CharField(max_length=100)
 	idade = models.IntegerField(default=0)
 
 	# Foto do politico
@@ -28,7 +28,7 @@ class Politico(models.Model):
 	cargo_atual = models.ForeignKey(Cargo, on_delete=models.CASCADE, blank=True, null=True)
 	# inicio_cargo = models.DateTimeField('Inicio do cargo atual')
 
-	partido_atual = models.ForeignKey(Partido, on_delete=models.CASCADE, blank=True, null=True)
+	partido_atual = models.ForeignKey(Partido, on_delete=models.CASCADE)
 
 	# Colocar uma foreignKey pra uma busca mais rapida? Nao sei!
 	# candidatura_atual = models.ForeignKey(Candidatura, on_delete=models.CASCADE, blank=True, null=True)
@@ -39,9 +39,12 @@ class Candidatura(models.Model):
 	# Politico
 	politico = models.ForeignKey(Politico, on_delete=models.CASCADE)
 
-	eleito = models.BooleanField(default=True)
+	eleito = models.BooleanField(default=False)
+	como_foi_eleito = models.CharField(max_length=20, default="-")
 
 	id_eleitoral = models.IntegerField(default=0)
+
+	partido = models.ForeignKey(Partido, on_delete=models.CASCADE)
 
 
 	inicio_periodo = models.DateTimeField('Inicio da Candidatura')
@@ -69,7 +72,7 @@ class Doacao(models.Model):
 	doador = models.CharField(max_length=200)
 	valor  = models.IntegerField(default=0)
 
-	politico = models.ForeignKey(Politico, on_delete=models.CASCADE)
+	candidatura = models.ForeignKey(Candidatura, on_delete=models.CASCADE)
 
 class Bancada(models.Model):
 	titulo = models.CharField(max_length=200)
